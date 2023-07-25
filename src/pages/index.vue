@@ -85,17 +85,8 @@
             <h2>最新博客</h2>
           </header>
           <div class="posts">
-            <article
-              data-aos="fade-up"
-              data-aos-duration="800"
-              v-for="article in articlesList"
-              :key="article._path"
-            >
-              <a href="#" class="image"
-                ><img
-                  src="~assets/images/pexels-andrea-davis-3653849.jpg"
-                  alt=""
-              /></a>
+            <article data-aos="fade-up" data-aos-duration="800" v-for="article in articlesList" :key="article._path">
+              <a href="#" class="image"><img src="~assets/images/pexels-andrea-davis-3653849.jpg" alt="" /></a>
               <h3>{{ article.title }}</h3>
               <p>
                 {{ article.description }}
@@ -134,3 +125,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="less" scoped>
+.posts {
+  flex-direction: row;
+}
+</style>

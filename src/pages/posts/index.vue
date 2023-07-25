@@ -40,8 +40,9 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
 .article-content {
-  margin: 40px 0;
+  margin: 40px;
 }
+
 article {
   width: 70%;
 }
@@ -87,23 +88,32 @@ article {
   border-top: 1px solid #ced5e0;
   width: 240px;
 }
+
 .stats .followers,
 .stats .following,
 .stats .stories {
   display: inline-block;
   padding: 6px 10px 0;
 }
+
 .stats .followers,
 .stats .following {
   border-right: 1px solid #ced5e0;
 }
+
 .stats .value {
   font-size: 18px;
   font-weight: 600;
 }
+
 .stats .label {
   display: block;
   font-size: 14px;
   color: #8c98a8;
 }
-</style>
+
+@media screen and (max-width:991px) {
+  .article-content {
+    margin: 40px auto;
+  }
+}</style>

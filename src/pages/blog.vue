@@ -14,10 +14,10 @@
           </header>
           <div class="blog-box">
             <div class="posts">
-              <article v-for="_post in articlesList" :key="_post._id">
+              <article v-for="_post in currentData" :key="_post._id">
                 <div class="info">
                   <div class="time">
-                    <span class="post-time">{{ _post.date }}</span>
+                    <span class="post-time">{{ new Date(_post.date).toLocaleDateString() }}</span>
                     <span class="post-year"></span>
                   </div>
 
@@ -32,7 +32,10 @@
                   <li @click="toDetail(_post.title)">阅读更多</li>
                 </ul>
               </article>
+              <el-pagination background layout="prev, pager, next" :page-size="pageSize" :current-page="currentPage"
+                :total="total" @current-change="handleCurrentChange" />
             </div>
+
           </div>
         </section>
       </div>
@@ -41,20 +44,39 @@
 </template>
 <script lang="ts">
 import { articlesInfo } from "@/store/articles";
-
 import publicMethos from "@/hooks/publicMethos";
+import { log } from "console";
+
 export default defineComponent({
   async setup() {
     let { toggle, currentToggle, toDetail } = publicMethos();
-    const articlesList = ref();
+    let articlesList = ref();
     const useArticle = articlesInfo();
     await useArticle.getAllArticle();
     articlesList.value = await useArticle.allArticle;
+    const total = ref(articlesList.value.length)
+    const pageSize = ref(8)
+    const currentPage = ref(1)
+    const currentData = ref()
+    const computePagination = () => {
+      const start = (currentPage.value - 1) * pageSize.value;
+      const end = start + pageSize.value;
+      return currentData.value = articlesList.value.slice(start, end);
+    };
+    const handleCurrentChange = (val: number) => {
+      currentPage.value = val;
+      currentData.value = computePagination();
+    }
+    currentData.value = computePagination();
     return {
-      articlesList,
       toggle,
+      pageSize,
+      currentPage,
       currentToggle,
       toDetail,
+      total,
+      currentData,
+      handleCurrentChange,
     };
   },
 });
@@ -66,7 +88,7 @@ export default defineComponent({
 
   article {
     position: relative;
-    width: 70%;
+    width: 100%;
     background: #fff;
     box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
@@ -86,6 +108,10 @@ export default defineComponent({
       height: 100%;
       background: #f56a6a;
       border-radius: 10px 0 0 10px;
+    }
+
+    &::after {
+      content: none;
     }
   }
 
@@ -128,6 +154,16 @@ export default defineComponent({
 
   .desc {
     margin: 30px 0;
+  }
+
+  .posts {
+    width: 80%;
+  }
+
+  @media screen and (max-width:991px) {
+    .posts {
+      width: 100%;
+    }
   }
 }
 </style>
