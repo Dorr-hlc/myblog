@@ -25,5 +25,12 @@ export default defineNuxtConfig({
     ],
     app: {
         baseURL: '/myblog/',
+        head: {
+            title: "HLC-BLOG",
+            meta: [
+                { name: 'description', content: '侯某的个人网站，主要记录前端相关学习博客' }
+            ],
+        },
+
     }
 } as NuxtConfig)
