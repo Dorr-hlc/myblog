@@ -25,7 +25,7 @@
                 </div>
 
                 <p class="desc">
-                  {{ _post.title }}
+                  {{ _post.description }}
                 </p>
 
                 <ul class="actions">
@@ -45,7 +45,6 @@
 <script lang="ts">
 import { articlesInfo } from "@/store/articles";
 import publicMethos from "@/hooks/publicMethos";
-import { log } from "console";
 
 export default defineComponent({
   async setup() {
@@ -67,7 +66,9 @@ export default defineComponent({
       currentPage.value = val;
       currentData.value = computePagination();
     }
+
     currentData.value = computePagination();
+    
     return {
       toggle,
       pageSize,

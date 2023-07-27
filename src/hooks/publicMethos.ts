@@ -26,12 +26,13 @@ export default function () {
       },
     });
   };
+
   return {
     toggle,
     getArticlesList,
     getAllArticlesList,
     toDetail,
     currentToggle,
-    title
+    title,
   }
 }

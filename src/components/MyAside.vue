@@ -48,7 +48,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onBeforeMount } from "vue";
+import { ref } from "vue";
 let selectedNavItem = ref(false);
 const emit = defineEmits();
 let toggleAside = () => {
