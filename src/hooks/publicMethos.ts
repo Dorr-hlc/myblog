@@ -33,6 +33,6 @@ export default function () {
     getAllArticlesList,
     toDetail,
     currentToggle,
-    title
+    title,
   }
 }

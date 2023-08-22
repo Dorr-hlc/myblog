@@ -25,7 +25,7 @@
                 </div>
 
                 <p class="desc">
-                  {{ _post.title }}
+                  {{ _post.description }}
                 </p>
 
                 <ul class="actions">
@@ -65,7 +65,9 @@ export default defineComponent({
       currentPage.value = val;
       currentData.value = computePagination();
     }
+
     currentData.value = computePagination();
+    
     return {
       toggle,
       pageSize,

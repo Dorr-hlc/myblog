@@ -39,8 +39,6 @@ export default defineNuxtConfig({
                 { rel: 'manifest', href: '/site.webmanifest' },
                 { rel: 'shortcut icon', type: "image/x-icon", href: '/favicon.ico' },
             ],
-
         }
-
     }
 } as NuxtConfig)

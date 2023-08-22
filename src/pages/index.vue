@@ -24,11 +24,11 @@
               我也了解后端开发，熟悉Node.js和Express框架，能够与后端开发人员合作构建完整的应用程序。我了解数据库设计和管理，能够使用MySQL和MongoDB等数据库管理工具。
               我注重代码质量和可维护性，熟悉版本控制工具，例如Git和SVN，能够使用这些工具进行协作开发。
             </p>
-            <ul class="actions">
+            <!-- <ul class="actions">
               <li>
                 <NuxtLink to="#" class="button big">了解更多</NuxtLink>
               </li>
-            </ul>
+            </ul> -->
           </div>
           <span class="image object" data-aos="fade-up" data-aos-duration="800">
             <img src="~assets/images/pexels-kevin-bidwell-2042281.jpg" alt="" />
@@ -109,9 +109,14 @@
 <script lang="ts">
 import { articlesInfo } from "@/store/articles";
 import publicMethos from "@/hooks/publicMethos";
+import clickEffect from "@/assets/js/Click"
+import { onMounted } from "vue";
 export default defineComponent({
   async setup() {
-    let { toggle, currentToggle, getArticlesList, toDetail } = publicMethos();
+    let { toggle, currentToggle, toDetail } = publicMethos();
+    onMounted(() => {
+      clickEffect()
+    })
     const articlesList = ref();
     const useArticle = articlesInfo();
     await useArticle.getRecentArticle();
@@ -123,6 +128,8 @@ export default defineComponent({
       toDetail,
     };
   },
+
+
 });
 </script>
 
