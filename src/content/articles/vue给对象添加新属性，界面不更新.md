@@ -5,13 +5,11 @@ tags:
   - vue
   - JavaScript
 ---
-
 ## 一、直接添加属性的问题
-
 
 `vue2`是用过 `Object.defineProperty`实现数据响应式
 
-```
+```js
 const obj = {}
 Object.defineProperty(obj, 'foo', {
         get() {
@@ -36,7 +34,6 @@ Object.defineProperty(obj, 'foo', {
 
 ## 解决方案
 
-
 `Vue` 不允许在已经创建的实例上动态添加新的响应式属性
 
 若想实现数据与视图同步更新，可采取下面三种解决方案：
@@ -59,14 +56,11 @@ Vue.set( target, propertyName/index, value )
 
 通过 `Vue.set`向响应式对象中添加一个 `property`，并确保这个新 `property`同样是响应式的，且触发视图更新
 
-
-
 ### Object.assign()
 
 直接使用 `Object.assign()`添加到对象的新属性不会触发更新
 
 应创建一个新的对象，合并原对象和混入对象的属性
-
 
 ### $forceUpdate
 
@@ -75,7 +69,6 @@ Vue.set( target, propertyName/index, value )
 `$forceUpdate`迫使 `Vue` 实例重新渲染
 
 PS：仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件。
-
 
 ### 小结
 

@@ -4,27 +4,31 @@ date: 2022-03-05
 tags:
   - node.js
 ---
+
 # 步骤
 
 ****安装**[express](https://so.csdn.net/so/search?q=express&spm=1001.2101.3001.7020)和http-proxy-middleware**
 
 前端在调接口的过程中往往会遇到跨域的问题，jq可以采取jsonp的方式，有时候我们也可以使用node.js代理解决跨域
 
-```javascript
+```
 npm install express --save
 npm install http-proxy-middle --save
 ```
 
-
 **跨域使用cors模块**
 
-```javascript
+
+<img :src="$withBase('/images/2022-06-01.png')" alt="foo">
+
+
+```
 npm install cors --save
 ```
 
 实例：下面是使用了UB 中的一个接口地址做了一下测试：
 
-```javascript
+```
 const express = require("express");
 var { createProxyMiddleware } = require("http-proxy-middleware");
 const cors = require("cors");
@@ -49,7 +53,7 @@ app.listen(3000, () => {
 
 **在页面中使用**
 
-```javascript
+```
 //随便测试一下
 $.ajax({
   type: "POST",

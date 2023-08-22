@@ -35,7 +35,6 @@
               <el-pagination background layout="prev, pager, next" :page-size="pageSize" :current-page="currentPage"
                 :total="total" @current-change="handleCurrentChange" />
             </div>
-
           </div>
         </section>
       </div>
@@ -45,7 +44,6 @@
 <script lang="ts">
 import { articlesInfo } from "@/store/articles";
 import publicMethos from "@/hooks/publicMethos";
-import { log } from "console";
 
 export default defineComponent({
   async setup() {

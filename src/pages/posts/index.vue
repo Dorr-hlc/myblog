@@ -9,6 +9,7 @@
           <!-- Header -->
           <MyHeader />
           <div class="article-content">
+            <h1>{{ detail.title }}</h1>
             <ContentRenderer :value="detail" />
           </div>
           <!-- Section -->
@@ -116,4 +117,5 @@ article {
   .article-content {
     margin: 40px auto;
   }
-}</style>
+}
+</style>
