@@ -47,11 +47,12 @@ import publicMethos from "@/hooks/publicMethos";
 
 export default defineComponent({
   async setup() {
+
     let { toggle, currentToggle, toDetail } = publicMethos();
     let articlesList = ref();
     const useArticle = articlesInfo();
     await useArticle.getAllArticle();
-    articlesList.value = await useArticle.allArticle;
+    articlesList.value = await useArticle.allArticle.sort((a: any, b: any) => new Date(b.date) - new Date(a.date));
     const total = ref(articlesList.value.length)
     const pageSize = ref(8)
     const currentPage = ref(1)
@@ -65,9 +66,9 @@ export default defineComponent({
       currentPage.value = val;
       currentData.value = computePagination();
     }
-
     currentData.value = computePagination();
-    
+
+
     return {
       toggle,
       pageSize,
