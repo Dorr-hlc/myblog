@@ -44,7 +44,7 @@
 <script lang="ts">
 import { articlesInfo } from "@/store/articles";
 import publicMethos from "@/hooks/publicMethos";
-
+import { ref, computed } from "vue"
 export default defineComponent({
   async setup() {
 
@@ -52,7 +52,12 @@ export default defineComponent({
     let articlesList = ref();
     const useArticle = articlesInfo();
     await useArticle.getAllArticle();
-    articlesList.value = await useArticle.allArticle.sort((a: any, b: any) => new Date(b.date) - new Date(a.date));
+    articlesList.value = await useArticle.allArticle
+    // 定义计算属性
+    const sortArticlesList = computed(() => {
+      // 在这里进行数据处理
+      return articlesList.value.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    });
     const total = ref(articlesList.value.length)
     const pageSize = ref(8)
     const currentPage = ref(1)
@@ -60,7 +65,7 @@ export default defineComponent({
     const computePagination = () => {
       const start = (currentPage.value - 1) * pageSize.value;
       const end = start + pageSize.value;
-      return currentData.value = articlesList.value.slice(start, end);
+      return currentData.value = sortArticlesList.value.slice(start, end);
     };
     const handleCurrentChange = (val: number) => {
       currentPage.value = val;

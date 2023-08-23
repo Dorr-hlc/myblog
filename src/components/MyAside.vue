@@ -22,10 +22,12 @@
               <nuxt-link to="/blog">blog</nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/tour">旅游</nuxt-link>
+              <!-- <nuxt-link to="/tour">旅游</nuxt-link> -->
+              旅游
             </li>
             <li>
-              <nuxt-link to="/life">生活</nuxt-link>
+              <!-- <nuxt-link to="/life">生活</nuxt-link> -->
+              生活
             </li>
           </ul>
         </nav>
