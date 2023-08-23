@@ -93,7 +93,7 @@ s.clear()
 
 `keys`方法、`values`方法、`entries`方法返回的都是遍历器对象
 
-```
+```js
 let set = new Set(['red', 'green', 'blue']);
 
 for (let item of set.keys()) {
@@ -120,7 +120,7 @@ for (let item of set.entries()) {
 
 `forEach()`用于对每个成员执行某种操作，没有返回值，键值、键名都相等，同样的 `forEach`方法有第二个参数，用于绑定处理函数的 `this`
 
-```
+```js
 let set = new Set([1, 4, 9]);
 set.forEach((value, key) => console.log(key + ' : ' + value))
 // 1 : 1
@@ -130,7 +130,7 @@ set.forEach((value, key) => console.log(key + ' : ' + value))
 
 扩展运算符和 `Set` 结构相结合实现数组或字符串去重
 
-```
+```js
 // 数组
 let arr = [3, 5, 2, 2, 5, 5];
 let unique = [...new Set(arr)]; // [3, 5, 2]
@@ -142,7 +142,7 @@ let unique = [...new Set(str)].join(""); // "352"
 
 实现并集、交集、和差集
 
-```
+```js
 let a = new Set([1, 2, 3]);
 let b = new Set([4, 3, 2]);
 
@@ -163,12 +163,10 @@ let difference = new Set([...a].filter(x => !b.has(x)));
 
 filter()方法的语法如下：
 
-```
+```js
 array.filter(function(currentValue, index, arr), thisValue)
 
 ```
-
-
 
 其中：
 
@@ -183,7 +181,7 @@ filter()方法返回一个新的数组，其中包含满足指定条件的元素
 
 下面是一些使用filter()方法的示例：
 
-```
+```js
 // 筛选出大于等于 10 的元素
 const nums = [5, 10, 15, 20];
 const filteredNums = nums.filter(num => num >= 10);
@@ -201,7 +199,6 @@ console.log(filteredWords); // ["hello", "world", "foo"]
 
 ```
 
-
 ## filter()方法的注意事项
 
 * `filter()`方法不会改变原始数组。
@@ -211,18 +208,15 @@ console.log(filteredWords); // ["hello", "world", "foo"]
 
 以上是关于JavaScript中filter()方法的详细解释和示例。通过这个方法，我们可以更方便地对数组进行筛选操作，提高开发效率。
 
-
 ## 二、Map
-
 
 `Map`类型是键值对的有序列表，而键和值都可以是任意类型
 
 `Map`本身是一个构造函数，用来生成 `Map` 数据结构
 
-```
+```js
 const m = new Map()
 ```
-
 
 ### 增删改查
 
@@ -239,14 +233,13 @@ const m = new Map()
 
 `size`属性返回 Map 结构的成员总数。
 
-```
+```js
 const map = new Map();
 map.set('foo', true);
 map.set('bar', false);
 
 map.size // 2
 ```
-
 
 ### set()
 
@@ -265,11 +258,9 @@ m.set(undefined, 'nah')    // 键是 undefined
 m.set(1, 'a').set(2, 'b').set(3, 'c') // 链式操作
 ```
 
-
 ### get()
 
 `get`方法读取 `key`对应的键值，如果找不到 `key`，返回 `undefined`
-
 
 ```javascript
 const m = new Map();
@@ -280,11 +271,9 @@ m.set(hello, 'Hello ES6!') // 键是函数
 m.get(hello)  // Hello ES6!
 ```
 
-
 ### has()
 
 `has`方法返回一个布尔值，表示某个键是否在当前 Map 对象之中
-
 
 ```javascript
 const m = new Map();
@@ -299,12 +288,11 @@ m.has(262)           // true
 m.has(undefined)     // true
 ```
 
-
 ### delete()
 
 `delete`方法删除某个键，返回 `true`。如果删除失败，返回 `false`
 
-```
+```js
 const m = new Map();
 m.set(undefined, 'nah');
 m.has(undefined)     // true
@@ -312,7 +300,6 @@ m.has(undefined)     // true
 m.delete(undefined)
 m.has(undefined)       // false
 ```
-
 
 ### clear()
 
@@ -328,8 +315,6 @@ map.clear()
 map.size // 0
 ```
 
-    
-
 ### 遍历
 
 `Map`结构原生提供三个遍历器生成函数和一个遍历方法：
@@ -340,7 +325,6 @@ map.size // 0
 * forEach()：遍历 Map 的所有成员
 
 遍历顺序就是插入顺序
-
 
 ```javascript
 const map = new Map([
@@ -385,8 +369,6 @@ map.forEach(function(value, key, map) {
 });
 ```
 
-
-
 ## WeakSet 和 WeakMap
 
 ### WeakSet
@@ -399,13 +381,11 @@ const ws = new WeakSet();
 
 `WeakSet`可以接受一个具有 `Iterable`接口的对象作为参数
 
-
 ```js
 const a = [[1, 2], [3, 4]];
 const ws = new WeakSet(a);
 // WeakSet {[1, 2], [3, 4]}
 ```
-
 
 在 `API`中 `WeakSet`与 `Set`有两个区别：
 
@@ -413,7 +393,6 @@ const ws = new WeakSet(a);
 * 没有 `size`属性
 
 `WeakSet`只能成员只能是引用类型，而不能是其他类型的值
-
 
 ```js
 let ws=new WeakSet();
@@ -430,7 +409,6 @@ console.log(ws) //WeakSet {{…}, {…}}
 ```
 
 `WeakSet`里面的引用只要在外部消失，它在 `WeakSet`里面的引用就会自动消失
-
 
 ### WeakMap
 

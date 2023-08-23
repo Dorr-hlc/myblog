@@ -67,7 +67,7 @@ routes:[
 
 在日常使用 `UI`框架，例如 `element-UI`、或者 `antd`，我们经常性直接引用整个 `UI`库，但实际上我用到的组件只有按钮，分页，表格，输入与警告 所以我们要按需引用
 
-```
+```js
 import { Button, Input, Pagination, Table, TableColumn, MessageBox } from 'element-ui';
 Vue.use(Button)
 Vue.use(Input)
@@ -80,7 +80,7 @@ Vue.use(Pagination)
 
 解决方案：在 `webpack`的 `config`文件中，修改 `CommonsChunkPlugin`的配置
 
-```
+```js
 minChunks: 3
 ```
 
@@ -96,13 +96,13 @@ minChunks: 3
 
 拆完包之后，我们再用 `gzip`做一下压缩 安装 `compression-webpack-plugin`
 
-```
+```js
 cnmp i compression-webpack-plugin -D
 ```
 
 在 `vue.congig.js`中引入并修改 `webpack`配置
 
-```
+```js
 const CompressionPlugin = require('compression-webpack-plugin')
 
 configureWebpack: (config) => {
@@ -121,7 +121,7 @@ configureWebpack: (config) => {
 
 在服务器我们也要做相应的配置 如果发送请求的浏览器支持 `gzip`，就发送给它 `gzip`格式的文件 我的服务器是用 `express`框架搭建的 只要安装一下 `compression`就能使用
 
-```
+```js
 const compression = require('compression')
 app.use(compression())  // 在其他中间件使用之前调用
 ```

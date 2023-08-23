@@ -41,7 +41,7 @@ tags:
 
 **示例**
 
-```
+```js
 	<div id="demo">
 		<h1>Hello，{{name.toUpperCase()}}，{{address}}</h1>
 	</div>
@@ -78,7 +78,7 @@ vue模板语法分为两大类，一种是插值语法，另外一种是指令�
 
 **代码示例**
 
-```
+```js
 	<div id="root">
 		<h1>插值语法</h1>
 		<h3>你好，{{name}}</h3>
@@ -115,7 +115,7 @@ vue模板语法分为两大类，一种是插值语法，另外一种是指令�
 
 **代码示例**
 
-```
+```js
 <body>
 		<!-- 
 			Vue中有2种数据绑定的方式：
@@ -169,7 +169,7 @@ vue模板语法分为两大类，一种是插值语法，另外一种是指令�
 
 **代码示例**
 
-```
+```js
 	<div id="root">
 		<h1>你好，{{name}}</h1>
 	</div>
@@ -219,7 +219,7 @@ V 变→ M 变 那就要DOM 监听，DOM监听才知道视图操作可能引起�
 
 **代码示例**
 
-```
+```js
 	<div id="root">
 		<h1>学校名称：{{name}}</h1>
 		<h1>学校地址：{{address}}</h1>
@@ -260,7 +260,7 @@ V 变→ M 变 那就要DOM 监听，DOM监听才知道视图操作可能引起�
 
 **代码示例**
 
-```
+```js
 		<script type="text/javascript" >
 			let number = 18
 			let person = {
@@ -313,7 +313,7 @@ descriptor-------------------------->要定义或修改的属性描述符
 
 **举例**
 
-```
+```js
     let obj1 = {x:100};
     let obj2 = {y:200};
 
@@ -334,7 +334,7 @@ descriptor-------------------------->要定义或修改的属性描述符
 
 扩展：在descriptor参数中，除了 **getter** 、 **setter** （最常用的两个）之外，还有其他配置项，例：
 
-```
+```js
 	let person = {
 	        name: 'xxc',
 	        age: 22
@@ -357,7 +357,7 @@ descriptor-------------------------->要定义或修改的属性描述符
 
 **代码示例**
 
-```
+```js
 		<div id="root">
 			<h2>学校名称：{{name}}</h2>
 			<h2>学校地址：{{address}}</h2>
@@ -400,7 +400,7 @@ descriptor-------------------------->要定义或修改的属性描述符
 
 5.@click="demo" 和 @click="demo($event)" 效果一致，但后者可以传参；
 
-```
+```js
 	<div id="root">
 		<h2>欢迎来到{{name}}学习</h2>
 		<!-- <button v-on:click="showInfo">点我提示信息</button> -->
@@ -464,7 +464,7 @@ descriptor-------------------------->要定义或修改的属性描述符
 
 **代码示例**
 
-```
+```js
 	<!-- 准备好一个容器-->
 	<div id="root">
 		姓：<input type="text" v-model="firstName"> <br /><br />
@@ -515,7 +515,7 @@ descriptor-------------------------->要定义或修改的属性描述符
 
 **简写形式**
 
-```
+```js
 				//简写
 				fullName(){
 					console.log('get被调用了')
@@ -529,7 +529,7 @@ descriptor-------------------------->要定义或修改的属性描述符
 
 1.在new Vue时传入watch配置
 
-```
+```js
 watch:{
     isHot:{
         immediate:true, //初始化时让handler调用一下
@@ -543,7 +543,7 @@ watch:{
 
 2.通过vm.$watch监视
 
-```
+```js
 vm.$watch('isHot',{
     immediate:true, //初始化时让handler调用一下
     //handler什么时候调用？当isHot发生改变时。

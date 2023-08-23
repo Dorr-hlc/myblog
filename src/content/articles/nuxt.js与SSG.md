@@ -24,7 +24,7 @@ SSR服务端渲染就是在浏览器请求页面URL时，服务端直接将我�
 
 举例
 
-```
+```js
 
 
      // 插入ga4跟踪代码
@@ -54,7 +54,7 @@ Nuxt.js其实就是一个基于vue的用于构建SSR、SSG应用的框架，我�
 
 2、选择我们需要的配置项就开始下载安装，以下是我项目安装完成后的Nuxt.config.js的基础配置
 
-```
+```js
 /*
  * @Copyright: Copyright© 2022 AOMEI
  * @Abstract:

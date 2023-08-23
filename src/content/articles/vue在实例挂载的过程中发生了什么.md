@@ -11,7 +11,7 @@ tags:
 
 首先找到vue的构造函数并进行分析：源码位置：src\core\instance\index.js
 
-```
+```js
 function Vue (options) {
   if (process.env.NODE_ENV !== 'production' &&
     !(this instanceof Vue)
@@ -26,7 +26,7 @@ function Vue (options) {
 
 `vue`构建函数调用 `_init`方法，但我们发现本文件中并没有此方法，但仔细可以看到文件下方定定义了很多初始化方法
 
-```
+```js
 initMixin(Vue);     // 定义 _init
 stateMixin(Vue);    // 定义 $set $get $delete $watch 等
 eventsMixin(Vue);   // 定义事件  $on  $once $off $emit
@@ -38,7 +38,7 @@ renderMixin(Vue);   // 定义 _render 返回虚拟dom
 
 源码位置：src\core\instance\init.js
 
-```
+```js
 
 
 
@@ -119,7 +119,7 @@ Vue.prototype._init = function (options?: Object) {
 
 源码位置：src\core\instance\state.js
 
-```
+```js
 export function initState (vm: Component) {
   // 初始化组件的watcher列表
   vm._watchers = []
@@ -143,7 +143,7 @@ export function initState (vm: Component) {
 
 我们和这里主要看初始化 `data`的方法为 `initData`，它与 `initState`在同一文件上
 
-```
+```js
 function initData (vm: Component) {
   let data = vm.$options.data
   // 获取到组件上的data

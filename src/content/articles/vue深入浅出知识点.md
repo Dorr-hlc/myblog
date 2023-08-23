@@ -28,7 +28,7 @@ Js有两种侦测变化，一种事Object.defineProperty，一种就是es6的Pro
 
 **configurable属性解析**
 
-```
+```js
       let info = {
             name: "Dorr"
         }
@@ -43,7 +43,7 @@ Js有两种侦测变化，一种事Object.defineProperty，一种就是es6的Pro
 
 **writable属性解析**，详细代码如下：
 
-```
+```js
         Object.defineProperty(info, "age", {
             writable: false,
             value: 15
