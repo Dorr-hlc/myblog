@@ -47,7 +47,6 @@ import publicMethos from "@/hooks/publicMethos";
 import { ref, computed } from "vue"
 export default defineComponent({
   async setup() {
-
     let { toggle, currentToggle, toDetail } = publicMethos();
     let articlesList = ref();
     const useArticle = articlesInfo();
