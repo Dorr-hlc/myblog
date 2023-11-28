@@ -4,6 +4,8 @@ date: 2023-08-31
 tags:
   - css
 ---
+传统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，且拥有比较良好的兼容性
+
 一、介绍
 传统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，且拥有比较良好的兼容性
 
@@ -14,7 +16,7 @@ tags:
 #二、单位
 在css单位中，可以分为长度单位、绝对单位，如下表所指示
 
-CSS单位	
+CSS单位
 相对长度单位	em、ex、ch、rem、vw、vh、vmin、vmax、%
 绝对长度单位	cm、mm、in、px、pt、pc
 这里我们主要讲述px、em、rem、vh、vw
@@ -50,7 +52,8 @@ em 是相对长度单位。相对于当前对象内文本的字体尺寸。如�
     html {font-size: 10px;  } /*  公式16px*62.5%=10px  */  
     .big{font-size: 1.4rem}
     .small{font-size: 1.2rem}
-</style> 
+</style>
+
 这时候.big元素的font-size为14px，而.small元素的font-size为12px
 
 #rem
@@ -58,7 +61,7 @@ rem，相对单位，相对的只是HTML根元素font-size的值
 
 同理，如果想要简化font-size的转化，我们可以在根元素html中加入font-size: 62.5%
 
-html {font-size: 62.5%;  } /*  公式16px*62.5%=10px  */ 
+html {font-size: 62.5%;  } /*  公式16px*62.5%=10px  */
 这样页面中1rem=10px、1.2rem=12px、1.4rem=14px、1.6rem=16px;使得视觉、使用、书写都得到了极大的帮助
 
 特点：

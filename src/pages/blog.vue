@@ -9,8 +9,10 @@
         <MyHeader />
         <!-- Section -->
         <section>
-          <header class="major">
+          <header class="major major-info">
             <h2>博客列表</h2>
+
+
           </header>
           <div class="blog-box">
             <div class="posts">
@@ -35,6 +37,11 @@
               <el-pagination background layout="prev, pager, next" :page-size="pageSize" :current-page="currentPage"
                 :total="total" @current-change="handleCurrentChange" />
             </div>
+            <div class="posts-tags">
+              <el-tag disable-transitions typ v-for="_tags in  tagsArticlesList " :type="_tags.type" effect="dark"
+                :key="_tags.tags" @click="handleTagClick(_tags.tags)">{{
+                  _tags.tags }}</el-tag>
+            </div>
           </div>
         </section>
       </div>
@@ -44,7 +51,8 @@
 <script lang="ts">
 import { articlesInfo } from "@/store/articles";
 import publicMethos from "@/hooks/publicMethos";
-import { ref, computed } from "vue"
+import { ref, computed, watch } from "vue"
+
 export default defineComponent({
   async setup() {
     let { toggle, currentToggle, toDetail } = publicMethos();
@@ -57,21 +65,50 @@ export default defineComponent({
       // 在这里进行数据处理
       return articlesList.value.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
     });
-    const total = ref(articlesList.value.length)
-    const pageSize = ref(8)
+    // 筛选出文章的tags标签
+    const tagsArticlesList = computed(() => {
+      const tagsObject = articlesList.value.reduce((result: any, item: any) => {
+        item.tags.forEach((tag: string) => {
+          result[tag] = { tags: tag, type: getRandomType() };
+        });
+        return result;
+      }, {});
+
+      function getRandomType() {
+        const types = ['success', 'info', '', 'danger', 'warning'];
+        const randomIndex = Math.floor(Math.random() * types.length);
+        return types[randomIndex];
+      }
+      return tagsObject;
+    });
+    let total = ref(articlesList.value.length)
+    let filterArticleList = ref(sortArticlesList.value) //筛选之后的文章，默认是所有
+    const pageSize = ref(6)
     const currentPage = ref(1)
-    const currentData = ref()
-    const computePagination = () => {
+    let currentData = ref()
+    // 分页的方法
+    const computePagination = (articleData: any) => {
       const start = (currentPage.value - 1) * pageSize.value;
       const end = start + pageSize.value;
-      return currentData.value = sortArticlesList.value.slice(start, end);
+      return currentData.value = articleData.slice(start, end);
     };
     const handleCurrentChange = (val: number) => {
       currentPage.value = val;
-      currentData.value = computePagination();
     }
-    currentData.value = computePagination();
-
+    // 点击标签筛选
+    const handleTagClick = (value: string) => {
+      // 使用 filter 方法筛选包含点击标签的数据项
+      filterArticleList.value = sortArticlesList.value.filter((item: any) => {
+        return item.tags.some((tag: any) => tag === value);
+      });
+      total.value = filterArticleList.value.length
+      currentData.value = computePagination(filterArticleList.value);
+    }
+    // 使用 watch 监听 页码 的变化
+    watch(currentPage, () => {
+      currentData.value = computePagination(filterArticleList.value);
+    });
+    currentData.value = computePagination(filterArticleList.value);
 
     return {
       toggle,
@@ -81,7 +118,9 @@ export default defineComponent({
       toDetail,
       total,
       currentData,
+      tagsArticlesList,
       handleCurrentChange,
+      handleTagClick
     };
   },
 });
@@ -89,7 +128,9 @@ export default defineComponent({
 <style lang="less" scoped>
 .blog-box {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-start;
 
   article {
     position: relative;
@@ -122,6 +163,14 @@ export default defineComponent({
 
   ul.actions {
     justify-content: flex-end;
+
+    li {
+      &:hover {
+        text-decoration: underline;
+        color: #f56a6a;
+      }
+    }
+
   }
 
   .info {
@@ -169,6 +218,16 @@ export default defineComponent({
     .posts {
       width: 100%;
     }
+  }
+
+  .posts-tags {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 16px;
+    cursor: pointer;
+    width: 20%;
+    flex-wrap: wrap;
   }
 }
 </style>
