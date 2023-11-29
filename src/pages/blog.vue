@@ -16,8 +16,9 @@
           <div class="blog-box">
             <div class="posts">
               <!-- 获取生成所有的路由，使其在打包时，能够生成所有的静态页 -->
-              <div style="display: none;"> 
-                <nuxt-link v-for="_post in sortArticlesList" :to="`/posts/${_post.title}`" :key="_post._id">阅读更多</nuxt-link>
+              <div style="display: none;">
+                <nuxt-link v-for="_post in sortArticlesList" :to="`/posts/${_post.title}`"
+                  :key="_post._id">阅读更多</nuxt-link>
               </div>
               <article v-for="_post in currentData" :key="_post._id">
                 <div class="info">
@@ -220,11 +221,6 @@ export default defineComponent({
     width: 80%;
   }
 
-  @media screen and (max-width:991px) {
-    .posts {
-      width: 100%;
-    }
-  }
 
   .posts-tags {
     display: flex;
@@ -234,6 +230,22 @@ export default defineComponent({
     cursor: pointer;
     width: 20%;
     flex-wrap: wrap;
+  }
+
+}
+
+@media screen and (max-width:991px) {
+  .blog-box {
+    flex-direction: column-reverse;
+
+    .posts {
+      width: 100%;
+    }
+
+    .posts-tags {
+      width: 100%;
+     justify-content: flex-start;
+    }
   }
 }
 </style>

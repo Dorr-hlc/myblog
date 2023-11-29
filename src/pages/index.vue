@@ -137,4 +137,12 @@ export default defineComponent({
 .posts {
   flex-direction: row;
 }
+
+article {
+  margin: 0 6em 0 0;
+}
+
+.posts article p {
+
+}
 </style>
