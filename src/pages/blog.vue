@@ -8,14 +8,17 @@
         <!-- Header -->
         <MyHeader />
         <!-- Section -->
+
         <section>
           <header class="major major-info">
             <h2>博客列表</h2>
-
-
           </header>
           <div class="blog-box">
             <div class="posts">
+              <!-- 获取生成所有的路由，使其在打包时，能够生成所有的静态页 -->
+              <div style="display: none;"> 
+                <nuxt-link v-for="_post in sortArticlesList" :to="`/posts/${_post.title}`" :key="_post._id">阅读更多</nuxt-link>
+              </div>
               <article v-for="_post in currentData" :key="_post._id">
                 <div class="info">
                   <div class="time">
@@ -31,7 +34,9 @@
                 </p>
 
                 <ul class="actions">
-                  <li @click="toDetail(_post.title)">阅读更多</li>
+                  <li>
+                    <nuxt-link :to="`/posts/${_post.title}`">阅读更多</nuxt-link>
+                  </li>
                 </ul>
               </article>
               <el-pagination background layout="prev, pager, next" :page-size="pageSize" :current-page="currentPage"
@@ -84,7 +89,7 @@ export default defineComponent({
     let total = ref(articlesList.value.length)
     let filterArticleList = ref(sortArticlesList.value) //筛选之后的文章，默认是所有
     const pageSize = ref(6)
-    const currentPage = ref(1)
+    let currentPage = ref(1)
     let currentData = ref()
     // 分页的方法
     const computePagination = (articleData: any) => {
@@ -119,6 +124,7 @@ export default defineComponent({
       total,
       currentData,
       tagsArticlesList,
+      sortArticlesList,
       handleCurrentChange,
       handleTagClick
     };

@@ -7,7 +7,7 @@ export default function () {
   };
   const router = useRouter();
   const route = useRoute();
-  const { title } = route.query;
+  const { title } = route.params;
   // 使用content插件查询最近的3条文章
   async function getArticlesList() {
     return await queryContent("/articles")
