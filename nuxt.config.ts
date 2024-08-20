@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         "@/assets/css/main.css",
     ],
     app: {
-        baseURL: '/myblog/',
+        baseURL: '/',
         head: {
             title: '侯某的个人网站',
             meta: [
@@ -34,11 +34,11 @@ export default defineNuxtConfig({
                 }
             ],
             link: [
-                { rel: 'apple-touch-icon', sizes: "180x180", type: 'image/x-icon', href: '/myblog/apple-touch-icon.png' },
-                { rel: 'icon', sizes: "32x32", type: 'image/png', href: '/myblog/favicon-32x32.png' },
-                { rel: 'icon', sizes: "16x16", type: 'image/png', href: '/myblog/favicon-16x16.png' },
-                { rel: 'manifest', href: '/myblog/site.webmanifest' },
-                { rel: 'shortcut icon', type: "image/x-icon", href: '/myblog/favicon.ico' },
+                { rel: 'apple-touch-icon', sizes: "180x180", type: 'image/x-icon', href: '/apple-touch-icon.png' },
+                { rel: 'icon', sizes: "32x32", type: 'image/png', href: '/favicon-32x32.png' },
+                { rel: 'icon', sizes: "16x16", type: 'image/png', href: '/favicon-16x16.png' },
+                { rel: 'manifest', href: '/site.webmanifest' },
+                { rel: 'shortcut icon', type: "image/x-icon", href: '/favicon.ico' },
             ],
         }
     }
