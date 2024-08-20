@@ -142,7 +142,39 @@ article {
   margin: 0 6em 0 0;
 }
 
-.posts article p {
+#banner p {
+  line-height: 40px;
+  font-size: 20px;
+}
 
+.features {
+  gap: 40px;
+  justify-content: center;
+
+  article {
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width:991px) {
+  #banner p {
+  line-height: 40px;
+  font-size: 14px;
+}
+  .posts {
+    width: 100%;
+    margin: auto;
+    flex-direction: column;
+    gap: 40px;
+    article {
+      margin: 0px;
+      width: 100%;
+   
+
+      &::before {
+        content: none;
+      }
+    }
+  }
 }
 </style>

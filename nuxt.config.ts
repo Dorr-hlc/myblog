@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         "@/assets/css/main.css",
     ],
     app: {
-        baseURL: '/myblog/',
+        baseURL: '/',
         head: {
             title: '侯某的个人网站',
             meta: [
